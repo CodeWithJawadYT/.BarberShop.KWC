@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -2473,7 +2474,7 @@
           <li><a href="#book">Book</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="nav-book" id="navBookBtn">Book Now</button>
+        <button class="nav-book" id="navBookBtn" onclick="scrollToSection('#book')">Book Now</button>
         <button class="ham" id="ham">
           <i class="fa-solid fa-bars" id="hamIco"></i>
         </button>
@@ -2554,7 +2555,7 @@
           modern precision at 141 Ontario Street North.
         </p>
         <div class="hero-acts">
-          <button class="btn-primary" id="heroBookBtn">
+          <button class="btn-primary" id="heroBookBtn" onclick="scrollToSection('#book')">
             <i class="fa-solid fa-scissors"></i><span>Book Appointment</span>
             <div class="btn-shine"></div>
           </button>
@@ -2836,7 +2837,7 @@
               <i class="fa-solid fa-plus"></i><span>Book Another</span>
               <div class="shine"></div>
             </button>
-            <button class="bbk" onclick="scrollTo('#home')">
+            <button class="bbk" onclick="scrollToSection('#home')">
               <i class="fa-solid fa-house"></i> Back to Top
             </button>
           </div>
@@ -3175,7 +3176,7 @@
                 ><i class="fa-brands fa-facebook-f"></i
               ></a>
             </div>
-            <button class="btn-primary btn-full" id="footBookBtn">
+            <button class="btn-primary btn-full" id="footBookBtn" onclick="scrollToSection('#book')">
               <span>Book Appointment</span>
               <div class="btn-shine"></div>
             </button>
@@ -3264,13 +3265,11 @@
       });
 
       /* ── SCROLL TO ── */
-      function scrollTo(sel) {
+function scrollToSection(sel) {
         const target = document.querySelector(sel);
         if (target) {
-          const offset = 80; // offset for the fixed navbar
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const targetRect = target.getBoundingClientRect().top;
-          const targetPosition = targetRect - bodyRect;
+          const offset = 80; 
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
           const offsetPosition = targetPosition - offset;
 
           window.scrollTo({
@@ -3281,15 +3280,7 @@
       }
 
       // Explicitly attach events to ensure they work
-      document
-        .getElementById("navBookBtn")
-        ?.addEventListener("click", () => scrollTo("#book"));
-      document
-        .getElementById("footBookBtn")
-        ?.addEventListener("click", () => scrollTo("#book"));
-      document
-        .getElementById("heroBookBtn")
-        ?.addEventListener("click", () => scrollTo("#book"));
+// Event listeners already handled by onclick attributes for better reliability
 
       /* ── REVEAL ── */
       const obs = new IntersectionObserver(
@@ -3779,3 +3770,4 @@
     </script>
   </body>
 </html>
+Fix Non-Functional Booking Buttons on Website - Manus
