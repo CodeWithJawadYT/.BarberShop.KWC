@@ -2578,8 +2578,14 @@
           <h2>Book <span class="accent">Appointment</span></h2>
           <div class="divider"></div>
           <p class="book-sub">
-            Three steps. Confirmed via WhatsApp. Walk-ins always welcome.
+            Three steps. Confirmed via WhatsApp.
           </p>
+        </div>
+
+        <!-- CLOSURE NOTICE -->
+        <div class="closure-notice reveal" role="alert" style="max-width:820px;margin:0 auto 30px;padding:16px 22px;border:1px solid var(--red);border-left:5px solid var(--red);background:linear-gradient(90deg,rgba(204,0,0,.14),rgba(204,0,0,.04));border-radius:10px;color:var(--text);font-weight:600;letter-spacing:.02em;display:flex;gap:12px;align-items:center;">
+          <i class="fa-solid fa-triangle-exclamation" style="color:var(--red2);font-size:1.3rem;"></i>
+          <span><strong style="color:var(--red2);">Notice:</strong> We will be closed on <strong>July 29th</strong>. Please do not book appointments for this date. We are also closed every <strong>Tuesday</strong>.</span>
         </div>
 
         <!-- STEPPER -->
@@ -3145,15 +3151,6 @@
                 </table>
               </div>
             </div>
-            <div class="c-item">
-              <div class="c-icon">
-                <i class="fa-solid fa-person-walking"></i>
-              </div>
-              <div>
-                <h4>Walk-Ins</h4>
-                <p>No appointment needed — just show up!</p>
-              </div>
-            </div>
           </div>
           <div class="contact-card reveal">
             <div class="cc-glow"></div>
@@ -3341,6 +3338,7 @@ function scrollToSection(sel) {
         },
         { id: "bc", name: "Buzz Cut", price: "$20", icon: "⚡", note: "" },
         { id: "bd", name: "Beard Trim", price: "$10", icon: "🧔", note: "" },
+        { id: "hb", name: "Haircut + Beard", price: "$40", icon: "✂️🧔", note: "Combo" },
       ];
       const MORNING = [
         "10:00 AM",
@@ -3477,9 +3475,13 @@ function scrollToSection(sel) {
           el.textContent = d;
           const isSun = date.getDay() === 0,
             isSat = date.getDay() === 6,
+            isTue = date.getDay() === 2,
+            isHoliday = calY === 2026 && calM === 6 && d === 29,
             isPast = date < today;
-          if (isPast) {
+          if (isPast || isTue || isHoliday) {
             el.classList.add("past");
+            if (isTue) el.title = "Closed on Tuesdays";
+            if (isHoliday) el.title = "Closed July 29th";
           } else {
             el.classList.add("avail");
             if (isSun) {
