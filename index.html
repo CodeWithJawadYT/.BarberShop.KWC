@@ -2584,8 +2584,7 @@
 
         <!-- CLOSURE NOTICE -->
         <div class="closure-notice reveal" role="alert" style="max-width:820px;margin:0 auto 30px;padding:16px 22px;border:1px solid var(--red);border-left:5px solid var(--red);background:linear-gradient(90deg,rgba(204,0,0,.14),rgba(204,0,0,.04));border-radius:10px;color:var(--text);font-weight:600;letter-spacing:.02em;display:flex;gap:12px;align-items:center;">
-          <i class="fa-solid fa-triangle-exclamation" style="color:var(--red2);font-size:1.3rem;"></i>
-          <span><strong style="color:var(--red2);">Notice:</strong> We will be closed on <strong>July 29th</strong>. Please do not book appointments for this date. We are also closed every <strong>Tuesday</strong>.</span>
+          <span><strong style="color:var(--red2);">Note:</strong> We are closed every <strong>Tuesday</strong>.</span>
         </div>
 
         <!-- STEPPER -->
@@ -3476,12 +3475,12 @@ function scrollToSection(sel) {
           const isSun = date.getDay() === 0,
             isSat = date.getDay() === 6,
             isTue = date.getDay() === 2,
-            isHoliday = calY === 2026 && calM === 6 && d === 29,
+            
             isPast = date < today;
-          if (isPast || isTue || isHoliday) {
+          if (isPast || isTue) {
             el.classList.add("past");
             if (isTue) el.title = "Closed on Tuesdays";
-            if (isHoliday) el.title = "Closed July 29th";
+            
           } else {
             el.classList.add("avail");
             if (isSun) {
